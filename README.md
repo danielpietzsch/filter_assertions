@@ -8,6 +8,10 @@ These assertions are added for use in your functional tests:
  * `assert_no_before_filter`: use this to test your `skip_before_filter` statements.
  * `assert_forgery_protection`: use this to test your `protect_from_forgery` statements.
 
+## Installation
+
+	script/plugin install git://github.com/pie4dan/filter_assertions.git
+
 ## Examples
 	
 	# Test if the before_filter :authenticate applies to all actions in the controller

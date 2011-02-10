@@ -6,6 +6,7 @@ class ActionController::TestCase
   # This method is the matching assertion to the before_filter or append_before_filter methods
   #
   # Examples:
+  # - assert_before_filter :authenticate
   # - assert_before_filter :authenticate, :only => [:index, :new]
   # - assert_before_filter :authenticate, :except => :index
   def assert_before_filter(before_filter_name, options = {})
@@ -38,6 +39,7 @@ class ActionController::TestCase
   # This method is the matching assertion to the skip_before_filter method
   #
   # Examples:
+  # - assert_no_before_filter :authenticate
   # - assert_no_before_filter :authenticate, :only => [:index, :new]
   # - assert_no_before_filter :authenticate, :except => :index
   def assert_no_before_filter(before_filter_name, options = {})
@@ -66,7 +68,7 @@ class ActionController::TestCase
   end
 
   # The protect_from_forgery method is just a wrapper for
-  # another before_filter. And so are these assertion methods
+  # another before_filter. And so is this assertion method
   # just a wrapper for the assert_before_filter method.
   def assert_forgery_protection(options = {})
     assert_before_filter(:verify_authenticity_token, options)    
@@ -121,6 +123,8 @@ class ActionController::TestCase
     end
   end
   
+  # Gets all the actions of the tested controller
+  # Returns an Array of Strings (the names of the actions)
   def get_all_controller_actions
     # Idea taken from this blogpost:
     # http://blog.wolfman.com/articles/2007/7/28/rspec-testing-all-actions-of-a-controller
